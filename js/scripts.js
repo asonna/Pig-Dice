@@ -1,84 +1,88 @@
 // Business logic
-// function Dice(sides) {
-//   this.sides = sides;
-// }
-//
-// Dice.prototype.roll = function() {
-//   var randomNumber = Math.floor(Math.random() * this.sides) + 1;
-//   return randomNumber;
-// }
-// var dice = new Dice(6);
 
-function Player()  {
+function Player(name)  {
+  this.name = name;
   this.totalScore = 0;
-  this.diceNumber = [];
+  this.turnScore = 0;
 }
 
-Player.prototype.roll = function() {
-  var result = 0
-  do {
-      result = Math.floor(Math.random() * 6) + 1;
-      this.diceNumber.append(result);
-  }
-  while (result !== 1);
-  //  || onclick="#stop");
+Player.prototype.rollPlay = function() {
+  var result = Math.floor(Math.random() * 6) + 1;
 
-  return this.diceNumber;
+  if(result === 1) {
+    this.turnScore = 0;
+} else {
+    this.turnScore += result;
+  }
+  return result;
 }
 
-Player.prototype.playerScore = function() {
-  var index = 0
-  for(index =0; index <= this.diceNumber.length; i++) {
-
-    if((this.diceNumber[i]) = 1) {
-    turnScore = 0;
-  } else {
-    var i = 0;
-    var turnScore = 0;
-    for(i=0; i =< this.diceNumber.length; i++) {
-      turnScore += parseInt(this.diceNumber[i]);
-    }
-  }
-  this.totalScore += turnScore;
+Player.prototype.holdStop = function() {
+  this.totalScore += this.turnScore;
+  this.turnScore = 0;
   return this.totalScore;
 }
 
-// user interface
-$(document).ready(function() {
-  $("#button").click(function(event) {
 
+Player.prototype.name = function() {
+  prompt("Player 1, please enter your name:");
+  }
+  this.turnScore = this.turnScore + roll;
+}
+
+
+
+
+// user interface
+
+$(document).ready(function() {
+  var newPlayer = new Player();
+
+  $("#start1").click(function(event) {
     event.preventDefault();
 
-  var newDiceNumber = $("#placeholder").val();
-  var newTotalScore = $("#blankscore").val();
+  var newTurnScore = $("#turnscoring").val();
+
+  $("#turnscoring").empty();
+  $("#placeholder").text(newPlayer.rollPlay())
+  $("#turnscoring").text(newPlayer.turnScore);
+
+  });
+
+  $("#stop1").click(function(event) {
+    event.preventDefault();
+
+  var newTotalScore = $("#blankscore1").val();
+
+  $("#placeholder").empty();
+  $("#turnscoring").empty();
+  $("#blankScore1").text(newPlayer.holdStop());
+
+  });
+
+  var newPlayer = new Player();
+
+  $("#start2").click(function(event) {
+    event.preventDefault();
+
+  var newTurnScore = $("#turnscoring").val();
+
+  $("#turnscoring").empty();
+  $("#placeholder").text(newPlayer.rollPlay())
+  $("#turnscoring").text(newPlayer.turnScore);
+
+  });
+
+  $("#stop2").click(function(event) {
+    event.preventDefault();
+
+  var newTotalScore = $("#blankscore2").val();
+
+  $("#placeholder").empty();
+  $("#turnscoring").empty();
+  $("#blankScore2").text(newPlayer.holdStop());
+
+  });
 
 
-  var newPlayer = new Player(newTotalScore, newDiceNumber);
-
-$("#placeholder").text("regard");
-
-
-
-
-
-
-    // function printNumber(number) {
-    //   var placeholder = document.getElementById("placeholder");
-    //   placeholder.innerHTML = number;
-    // }
-    // var button = document.getElementById("button");
-    // button.onclick = function() {
-    //   var result = dice.roll();
-    //   printNumber(result);
-    // };
-
-    // newRolledNumber = 0;
-    // newScoreArray = [];
-    //
-    // var currentScore = roundScore(newScoreArray);
-    //
-    // var newPlayer = new Player(currentScore);
-    // console.log(currentScore);
-    // $("#output h2").text(newPlayer.rollDie());
-//   });
-// });
+});

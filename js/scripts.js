@@ -1,48 +1,84 @@
 // Business logic
-function Player(score)  {
-  this.score = score;
+// function Dice(sides) {
+//   this.sides = sides;
+// }
+//
+// Dice.prototype.roll = function() {
+//   var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+//   return randomNumber;
+// }
+// var dice = new Dice(6);
+
+function Player()  {
+  this.totalScore = 0;
+  this.diceNumber = [];
 }
 
-Player.prototype.rollDie = function() {
-  return Math.floor(Math.random() * (6 - 1 + 1)) + 1;
-}
-
-function roundScore(scoreArray) {
-  var addedScore = 0
-  for(i=0; i<= scoreArray.length; i++) {
-    addedScore += i;
+Player.prototype.roll = function() {
+  var result = 0
+  do {
+      result = Math.floor(Math.random() * 6) + 1;
+      this.diceNumber.append(result);
   }
-  return addedScore
+  while (result !== 1);
+  //  || onclick="#stop");
+
+  return this.diceNumber;
 }
 
+Player.prototype.playerScore = function() {
+  var index = 0
+  for(index =0; index <= this.diceNumber.length; i++) {
 
-function keepScore()  {
-  rolledNumber = 0;
-  scoreArray = [];
-  for (i=0; i<1000; i++) {
-
-    if (i != 1) {
-    scoreArray.push(rolledNumber);
-    } else {
-    scoreArray = [];
+    if((this.diceNumber[i]) = 1) {
+    turnScore = 0;
+  } else {
+    var i = 0;
+    var turnScore = 0;
+    for(i=0; i =< this.diceNumber.length; i++) {
+      turnScore += parseInt(this.diceNumber[i]);
     }
   }
+  this.totalScore += turnScore;
+  return this.totalScore;
 }
 
-
-// User interface logic
+// user interface
 $(document).ready(function() {
-  $('#roll').click(function(event) {
+  $("#button").click(function(event) {
 
     event.preventDefault();
 
-    newRolledNumber = 0;
-    newScoreArray = [];
+  var newDiceNumber = $("#placeholder").val();
+  var newTotalScore = $("#blankscore").val();
 
-    var currentScore = roundScore(newScoreArray);
 
-    var newPlayer = new Player(currentScore);
-    console.log(currentScore);
-    $("#output h2").text(newPlayer.rollDie());
-  });
-});
+  var newPlayer = new Player(newTotalScore, newDiceNumber);
+
+$("#placeholder").text("regard");
+
+
+
+
+
+
+    // function printNumber(number) {
+    //   var placeholder = document.getElementById("placeholder");
+    //   placeholder.innerHTML = number;
+    // }
+    // var button = document.getElementById("button");
+    // button.onclick = function() {
+    //   var result = dice.roll();
+    //   printNumber(result);
+    // };
+
+    // newRolledNumber = 0;
+    // newScoreArray = [];
+    //
+    // var currentScore = roundScore(newScoreArray);
+    //
+    // var newPlayer = new Player(currentScore);
+    // console.log(currentScore);
+    // $("#output h2").text(newPlayer.rollDie());
+//   });
+// });

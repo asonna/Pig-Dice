@@ -23,7 +23,7 @@
   border: 1px solid gray;
   border-radius: 10px;
   font-size:50px;
-  float: left;
+  margin: auto;
 }
 
 #board {

@@ -23,21 +23,20 @@ Player.prototype.holdStop = function() {
   return this.totalScore;
 }
 
-
-Player.prototype.name = function() {
-  prompt("Player 1, please enter your name:");
-  }
-  this.turnScore = this.turnScore + roll;
-}
-
-
-
+//
+// Player.prototype.name = function() {
+//   prompt("Player 1, please enter your name:");
+//   }
+//   this.turnScore = this.turnScore + roll;
+// }
+//
+//
+//
 
 // user interface
 
 $(document).ready(function() {
   var newPlayer = new Player();
-
   $("#start1").click(function(event) {
     event.preventDefault();
 

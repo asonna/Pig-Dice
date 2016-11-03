@@ -2,6 +2,8 @@
   font-family: Helvetica, Arial, sans-serif;
   text-align: center;
 }
+
+
 #turnscoring {
   background-color: black;
   border-radius: 6px;
@@ -12,6 +14,7 @@
   width: 100px;
   height: 30px;
   cursor: pointer;
+  margin: auto;
 }
 
 #placeholder {
@@ -20,6 +23,7 @@
   border: 1px solid gray;
   border-radius: 10px;
   font-size:50px;
+  float: left;
 }
 
 #board {
@@ -27,7 +31,7 @@
   width: 300px;
   border: 1px solid gray;
   border-radius: 10px;
-  object-position: center;
+  margin: auto;
 }
 
 #blankScore {
@@ -36,6 +40,7 @@
   border: 1px solid gray;
   border-radius: 10px;
   font-size:50px;
+  margin: auto;
 }
 
 #player1 {
@@ -46,6 +51,7 @@
 }
 
 #player2 {
+  float: right;
   height: 200px;
   width: 300px;
   border: 1px solid gray;

@@ -20,7 +20,7 @@ Player.prototype.rollPlay = function() {
 Player.prototype.holdStop = function() {
   this.totalScore += this.turnScore;
   this.turnScore = 0;
-  return this.totalScore;
+  return this.totalScore; 
 }
 
 //
